@@ -7,6 +7,7 @@ public class RetainData : MonoBehaviour
     public static RetainData data;//nice static reference
     // Start is called before the first frame update
     public bool HasJetpack;//set to true if player has jetpack
+    public int health = 100; //player health
     void Awake()
     {
         if (data == null)
@@ -19,14 +20,5 @@ public class RetainData : MonoBehaviour
             Destroy(gameObject);
         }
     }
-    void Start()
-    {
-        
-    }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }

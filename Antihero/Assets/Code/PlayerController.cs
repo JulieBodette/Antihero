@@ -1,11 +1,13 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
 {
     public float speed = 10.0f;
     public float thrust = 10f;
+    
     public Rigidbody rb;
     public SphereCollider col;
     public LayerMask groundLayers; //set this to the default layer in the inspector so the player can jump off anythiung
@@ -33,6 +35,10 @@ public class PlayerController : MonoBehaviour
         }
         transform.Translate(straffe, 0, translation);
 
+        if(RetainData.data.health <= 0)
+        {
+            SceneManager.LoadScene("GameOver");
+        }
 
 
             if (Input.GetKeyDown(KeyCode.Escape))

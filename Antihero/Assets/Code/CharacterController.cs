@@ -5,9 +5,12 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     public float speed = 10.0f;
+    public float thrust =1000.0f;
+    public Rigidbody rb;
 
     void Start()
     {
+        rb = GetComponent<Rigidbody>();
         Cursor.lockState = CursorLockMode.Locked;
     }
 
@@ -18,6 +21,10 @@ public class CharacterController : MonoBehaviour
         translation *= Time.deltaTime;
         straffe *= Time.deltaTime;
 
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            rb.AddForce(Vector3.up*thrust);
+        }
         transform.Translate(straffe, 0, translation);
 
         if (Input.GetKeyDown(KeyCode.Escape))
